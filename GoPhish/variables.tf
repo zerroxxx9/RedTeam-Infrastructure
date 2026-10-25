@@ -20,7 +20,7 @@ variable "phish_domain" {
 }
 
 variable "server_name" {
-  description = "Server + tailnet hostname."
+  description = "Server  hostname."
   type        = string
   default     = "gophish-engagement"
 }

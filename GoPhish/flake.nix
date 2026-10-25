@@ -11,18 +11,14 @@
       let
         pkgs = import nixpkgs {
           inherit system;
-          # Terraform is BSL-licensed, so nixpkgs marks it unfree. This flag lets
-          # the devShell include it. To avoid unfree entirely, drop this line and
-          # swap `terraform` -> `opentofu` below (then use `tofu` instead of
-          # `terraform` on the CLI — it reads the same .tf files unchanged).
           config.allowUnfree = true;
         };
       in
       {
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
-            terraform   # or: opentofu
-            hcloud      # Hetzner CLI — handy for checking which server types are in stock
+            terraform
+            hcloud
             jq
           ];
 

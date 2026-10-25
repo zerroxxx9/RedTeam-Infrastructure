@@ -19,9 +19,6 @@ resource "hcloud_ssh_key" "admin" {
 resource "hcloud_firewall" "gophish" {
   name = "gophish-fw"
 
-  # SSH — locked to your admin IP only. Tailscale SSH works over the tailnet
-  # (outbound WireGuard, no inbound port), so you can delete this rule entirely
-  # once the tailnet is up and rely solely on `tailscale ssh`.
   rule {
     direction  = "in"
     protocol   = "tcp"
@@ -29,7 +26,7 @@ resource "hcloud_firewall" "gophish" {
     source_ips = [var.admin_ssh_source_ip]
   }
 
-  # Phishing landing site — public, this is what recipients hit.
+  # Phishing landing site
   rule {
     direction  = "in"
     protocol   = "tcp"
@@ -43,8 +40,6 @@ resource "hcloud_firewall" "gophish" {
     source_ips = ["0.0.0.0/0", "::/0"]
   }
 
-  # NOTE: 3333 (admin UI) is never opened. It binds to 127.0.0.1 and is
-  # reachable only over the tailnet or an SSH tunnel.
 }
 
 resource "hcloud_server" "gophish" {
