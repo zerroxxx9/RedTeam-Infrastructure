@@ -1,0 +1,13 @@
+# Copy to terraform.tfvars and fill in. terraform.tfvars is gitignored by convention —
+# do NOT commit real tokens.
+
+hcloud_token        = "your-hetzner-api-token"
+ssh_public_key      = "ssh-ed25519 AAAA... you@host"
+admin_ssh_source_ip = "203.0.113.7/32"          # your current public IP, /32
+phish_domain        = "mail-update.example.com"  # the pretext domain for this engagement
+
+# Optional overrides:
+# server_name     = "gophish-engagement"
+# server_type     = "cpx11"   # cheapest in-stock x86; allowed: cx22/cx23/cpx11/cpx21/cx32/cx33
+# server_location = "fsn1"
+# gophish_version = "0.12.1"

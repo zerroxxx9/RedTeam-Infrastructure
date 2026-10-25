@@ -1,0 +1,19 @@
+# Secrets — NEVER commit these (contain tokens and your IP)
+terraform.tfvars
+*.auto.tfvars
+
+# Terraform state — contains secrets in plaintext
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Terraform working dir
+.terraform/
+.terraform.tfstate.lock.info
+
+# direnv
+.direnv/
+
+# NOTE: .terraform.lock.hcl is intentionally NOT ignored — commit it to pin
+# provider versions across machines.
